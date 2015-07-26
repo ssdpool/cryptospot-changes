@@ -96,8 +96,8 @@ private:
 public:
 
     CSporkManager() {
-        strMainPubKey = "042a1b4062671b607df42ec4fb910020eac253c3e2d1bd36a00f39b0d169077e8c3514cd97fbaa4d056fe4b3925167633d4f54e8452a44ec55d1f3b13fc1fe13e1";
-        strTestPubKey = "042a1b4062671b607df42ec4fb910020eac253c3e2d1bd36a00f39b0d169077e8c3514cd97fbaa4d056fe4b3925167633d4f54e8452a44ec55d1f3b13fc1fe13e1";
+        strMainPubKey = "048c46c5f06a3d6cbed8f5b5e99d6dd0afeb7f8c490eb8326c6b2218e9e966596332d8351217fd038f1cedfc9151f71f417aeda2a244767f8d57ef077e3c988d21";
+        strTestPubKey = "048c46c5f06a3d6cbed8f5b5e99d6dd0afeb7f8c490eb8326c6b2218e9e966596332d8351217fd038f1cedfc9151f71f417aeda2a244767f8d57ef077e3c988d21";
     }
 
     std::string GetSporkNameByID(int id);
