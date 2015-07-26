@@ -1464,7 +1464,7 @@ bool CDarkSendPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         if(sessionTotalValue > nBalanceNeedsAnonymized) sessionTotalValue = nBalanceNeedsAnonymized;
 
         double fCryptoSpotsSubmitted = (sessionTotalValue / CENT);
-        LogPrintf("Submitting Darksend for %f CryptoSpots CENT - sessionTotalValue %d\n", fCryptoSpotsSubmitted, sessionTotalValue);
+        LogPrintf("Submitting Darksend for %f CS CENT - sessionTotalValue %d\n", fCryptoSpotsSubmitted, sessionTotalValue);
 
         if(pwalletMain->GetDenominatedBalance(true, true) > 0){ //get denominated unconfirmed inputs
             LogPrintf("DoAutomaticDenominating -- Found unconfirmed denominated outputs, will wait till they confirm to continue.\n");
@@ -1851,10 +1851,10 @@ bool CDarkSendPool::IsCompatibleWithSession(int64_t nDenom, CTransaction txColla
 void CDarkSendPool::GetDenominationsToString(int nDenom, std::string& strDenom){
     // Function returns as follows:
     //
-    // bit 0 - 100CryptoSpots+1 ( bit on if present )
-    // bit 1 - 10CryptoSpots+1
-    // bit 2 - 1CryptoSpots+1
-    // bit 3 - .1CryptoSpots+1
+    // bit 0 - 100CS+1 ( bit on if present )
+    // bit 1 - 10CS+1
+    // bit 2 - 1CS+1
+    // bit 3 - .1CS+1
     // bit 3 - non-denom
 
 
@@ -1910,10 +1910,10 @@ int CDarkSendPool::GetDenominations(const std::vector<CTxOut>& vout){
 
     // Function returns as follows:
     //
-    // bit 0 - 100CryptoSpots+1 ( bit on if present )
-    // bit 1 - 10CryptoSpots+1
-    // bit 2 - 1CryptoSpots+1
-    // bit 3 - .1CryptoSpots+1
+    // bit 0 - 100CS+1 ( bit on if present )
+    // bit 1 - 10CS+1
+    // bit 2 - 1CS+1
+    // bit 3 - .1CS+1
 
     return denom;
 }
@@ -2117,7 +2117,7 @@ void ThreadCheckDarkSendPool()
     {
         c++;
 
-        MilliSleep(2500);
+        MilliSleep(1000);
         //LogPrintf("ThreadCheckDarkSendPool::check timeout\n");
         darkSendPool.CheckTimeout();
 
@@ -2128,10 +2128,9 @@ void ThreadCheckDarkSendPool()
                 is modifying the coins view without a mempool lock. It causes
                 segfaults from this code without the cs_main lock.
             */
-	    {
+	    
 
-	    LOCK(cs_masternodes);
-            vector<CMasterNode>::iterator it = vecMasternodes.begin();
+	    vector<CMasterNode>::iterator it = vecMasternodes.begin();
             //check them separately
             while(it != vecMasternodes.end()){
                 (*it).Check();
@@ -2146,9 +2145,9 @@ void ThreadCheckDarkSendPool()
                 if(mn.addr.IsRFC1918()) continue; //local network
                 if(mn.IsEnabled()) {
                     if(fDebug) LogPrintf("Sending masternode entry - %s \n", mn.addr.ToString().c_str());
-		                BOOST_FOREACH(CNode* pnode, vNodes) {
-                          pnode->PushMessage("dsee", mn.vin, mn.addr, mn.sig, mn.now, mn.pubkey, mn.pubkey2, count, i, mn.lastTimeSeen, mn.protocolVersion);
-		            }
+		    BOOST_FOREACH(CNode* pnode, vNodes) {
+                        pnode->PushMessage("dsee", mn.vin, mn.addr, mn.sig, mn.now, mn.pubkey, mn.pubkey2, count, i, mn.lastTimeSeen, mn.protocolVersion);
+		}   
              }
 
                 i++;
@@ -2165,9 +2164,7 @@ void ThreadCheckDarkSendPool()
                 }
             }
 
-	    }
-
-            masternodePayments.CleanPaymentList();
+	    masternodePayments.CleanPaymentList();
             CleanTransactionLocksList();
         }
 

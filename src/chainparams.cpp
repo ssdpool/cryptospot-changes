@@ -52,7 +52,7 @@ public:
         pchMessageStart[1] = 0xc2;
         pchMessageStart[2] = 0x3d;
         pchMessageStart[3] = 0x1a;
-        vAlertPubKey = ParseHex("040816997b6b68913481144a1586c9b2c0d47cfba68547a9d0594bcb2683d7dcfdb4b7b6cd78d8652163bd2865dcf84e35bd896da7188fc6553ca502937309a011");
+        vAlertPubKey = ParseHex("0414ac2823cffcd6dd200607e423a371591cc34356a43c3ea1df365364ae12c196d45779015f5352f26ac1548a61d41516a47bbb75a2b91c8d32b5f3931987bc6c");
         nDefaultPort = 33222;
         nRPCPort = 33223;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16);
@@ -77,11 +77,13 @@ public:
         assert(hashGenesisBlock == uint256("0x47670a994494bd3cfc606d48ae50c68df7003b7b868a4647e7d5d69b8fcd5803"));
         assert(genesis.hashMerkleRoot == uint256("0x1bbe46b441d5cd182522d5ccfc641da2b900826a54659148aecd475f9c80433d"));
 
-        vSeeds.push_back(CDNSSeedData("104.236.102.172", "104.236.102.172"));
+        vSeeds.push_back(CDNSSeedData("45.55.243.122", "45.55.243.122"));
+        vSeeds.push_back(CDNSSeedData("104.236.84.239", "104.236.84.239"));
+        vSeeds.push_back(CDNSSeedData("104.236.83.193", "104.236.83.193"));
 
         base58Prefixes[PUBKEY_ADDRESS] = list_of(28);
         base58Prefixes[SCRIPT_ADDRESS] = list_of(85);
-        base58Prefixes[SECRET_KEY] =     list_of(153);
+        base58Prefixes[SECRET_KEY] =     list_of(156);
         base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E);
         base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4);
 
@@ -133,7 +135,7 @@ public:
 
         base58Prefixes[PUBKEY_ADDRESS] = list_of(28);
         base58Prefixes[SCRIPT_ADDRESS] = list_of(196);
-        base58Prefixes[SECRET_KEY]     = list_of(239);
+        base58Prefixes[SECRET_KEY]     = list_of(236);
         base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x35)(0x87)(0xCF);
         base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x35)(0x83)(0x94);
 

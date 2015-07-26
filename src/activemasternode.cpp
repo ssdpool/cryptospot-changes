@@ -422,7 +422,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
     vector<COutput> filteredCoins;
 
     // Retrieve all possible outputs
-    pwalletMain->AvailableCoinsMN(vCoins);
+    pwalletMain->AvailableCoins(vCoins);
 
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins)
