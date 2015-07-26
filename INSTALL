@@ -1,0 +1,9 @@
+Building CryptoSpots
+
+See doc/readme-qt.rst for instructions on building CryptoSpots QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of CryptoSpots.
+
+See doc/build-*.txt for instructions on building CryptoSpotsd,
+the intended-for-services, no-graphical-interface, reference
+implementation of CryptoSpots.
